@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'Signika Negative';
+  src: url('signika/Signika_Negative/SignikaNegative-Regular.ttf') format('truetype');
+}
+
+:root {
+  --green: #119966;
+  --red: #991133;
+  --blue: #116699;
+}
+html, body {
+  font-family: 'Signika Negative';
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  background-color: #333344;
+  overflow: hidden;
+}
+
+svg text {
+  font-size: .65em;
+}
+svg text#title {
+  font-size: 2em;
+}
+
+svg circle, svg text:not(#title) {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+svg circle.shown, svg text:not(#title).shown {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+svg line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 1s linear forwards;
+}
+svg line.noanim {
+  stroke-dashoffset: 800;
+  animation: none;
+}
+svg line.noanim.hidden {
+  animation: dash 1s linear forwards reverse;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 800;
+  }
+}

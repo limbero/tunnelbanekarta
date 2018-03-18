@@ -1,0 +1,1220 @@
+[
+  {
+    "date": "1950-10-01",
+    "stations": [
+      {
+        "name": "Slussen",
+        "textAnchor": "start",
+        "textAngle": 45,
+        "id": "slussen",
+        "connections": {
+          "s": "medis"
+        }
+      }, {
+        "name": "Medborgarplatsen",
+        "textAnchor": "start",
+        "textAngle": 45,
+        "id": "medis",
+        "connections": {
+          "n": "slussen",
+          "s": "skanstull"
+        }
+      }, {
+        "name": "Skanstull",
+        "textAnchor": "start",
+        "textAngle": 45,
+        "id": "skanstull",
+        "connections": {
+          "n": "medis",
+          "s": "gullmars"
+        }
+      }, {
+        "name": "Gullmarsplan",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "gullmars",
+        "connections": {
+          "n": "skanstull",
+          "s": "skärmarbrink"
+        }
+      }, {
+        "name": "Skärmarbrink",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "skärmarbrink",
+        "connections": {
+          "n": "gullmars",
+          "s": "blåsut"
+        }
+      }, {
+        "name": "Blåsut",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "blåsut",
+        "connections": {
+          "n": "skärmarbrink",
+          "s": "sandsborg"
+        }
+      }, {
+        "name": "Sandsborg",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "sandsborg",
+        "connections": {
+          "n": "blåsut",
+          "s": "skogskyrkogården"
+        }
+      }, {
+        "name": "Skogskyrkogården",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "skogskyrkogården",
+        "connections": {
+          "n": "sandsborg",
+          "s": "tallkrogen"
+        }
+      }, {
+        "name": "Tallkrogen",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "tallkrogen",
+        "connections": {
+          "n": "skogskyrkogården",
+          "s": "gubbängen"
+        }
+      }, {
+        "name": "Gubbängen",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "gubbängen",
+        "connections": {
+          "n": "tallkrogen",
+          "s": "hökarängen"
+        }
+      }, {
+        "name": "Hökarängen",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "hökarängen",
+        "connections": {
+          "n": "gubbängen"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1951-09-09",
+    "stations": [
+      {
+        "id": "gullmars",
+        "connections": {
+          "sw": "globen"
+        }
+      }, {
+        "name": "Globen",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "globen",
+        "connections": {
+          "ne": "gullmars",
+          "sw": "enskedegård"
+        }
+      }, {
+        "name": "Enskede gård",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "enskedegård",
+        "connections": {
+          "ne": "globen",
+          "sw": "sockenplan"
+        }
+      }, {
+        "name": "Sockenplan",
+        "textAnchor": "start",
+        "textAngle": 90,
+        "id": "sockenplan",
+        "connections": {
+          "ne": "enskedegård",
+          "sw": "svedmyra"
+        }
+      }, {
+        "name": "Svedmyra",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "svedmyra",
+        "connections": {
+          "ne": "sockenplan",
+          "sw": "stureby"
+        }
+      }, {
+        "name": "Stureby",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "stureby",
+        "connections": {
+          "ne": "svedmyra"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1952-10-26",
+    "startPos": {
+      "id": "slussen",
+      "offset": {
+        "dir": "n",
+        "lengths": 3
+      }
+    },
+    "stations": [
+      {
+        "name": "Kungsgatan",
+        "textAnchor": "end",
+        "textAngle": 45,
+        "id": "hötorget",
+        "connections": {
+          "w": "rådmansgatan"
+        }
+      }, {
+        "name": "Rådmansgatan",
+        "textAnchor": "end",
+        "textAngle": 45,
+        "id": "rådmansgatan",
+        "connections": {
+          "w": "odenplan",
+          "e": "hötorget"
+        }
+      }, {
+        "name": "Odenplan",
+        "textAnchor": "end",
+        "textAngle": 45,
+        "id": "odenplan",
+        "connections": {
+          "s": "steriksplan",
+          "e": "rådmansgatan"
+        }
+      }, {
+        "name": "S:t Eriksplan",
+        "textAnchor": "end",
+        "textAngle": 45,
+        "id": "steriksplan",
+        "connections": {
+          "s": "fridhemsplan",
+          "n": "odenplan"
+        }
+      }, {
+        "name": "Fridhemsplan",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "fridhemsplan",
+        "connections": {
+          "w": "thorildsplan",
+          "n": "steriksplan"
+        }
+      }, {
+        "name": "Thorildsplan",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "thorildsplan",
+        "connections": {
+          "w": "kristineberg",
+          "e": "fridhemsplan"
+        }
+      }, {
+        "name": "Kristineberg",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "kristineberg",
+        "connections": {
+          "w": "alvik",
+          "e": "thorildsplan"
+        }
+      }, {
+        "name": "Alvik",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "alvik",
+        "connections": {
+          "w": "storamossen",
+          "e": "kristineberg"
+        }
+      }, {
+        "name": "Stora mossen",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "storamossen",
+        "connections": {
+          "w": "abrahamsberg",
+          "e": "alvik"
+        }
+      }, {
+        "name": "Abrahamsberg",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "abrahamsberg",
+        "connections": {
+          "w": "åkeshov",
+          "e": "storamossen"
+        }
+      }, {
+        "name": "Åkeshov",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "åkeshov",
+        "connections": {
+          "w": "ängbyplan",
+          "e": "abrahamsberg"
+        }
+      }, {
+        "name": "Ängbyplan",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "ängbyplan",
+        "connections": {
+          "w": "islandstorget",
+          "e": "åkeshov"
+        }
+      }, {
+        "name": "Islandstorget",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "islandstorget",
+        "connections": {
+          "w": "blackeberg",
+          "e": "ängbyplan"
+        }
+      }, {
+        "name": "Blackeberg",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "blackeberg",
+        "connections": {
+          "w": "råcksta",
+          "e": "islandstorget"
+        }
+      }, {
+        "name": "Råcksta",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "råcksta",
+        "connections": {
+          "w": "vällingby",
+          "e": "blackeberg"
+        }
+      }, {
+        "name": "Vällingby",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "vällingby",
+        "connections": {
+          "e": "råcksta"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1954-11-22",
+    "stations": [
+      {
+        "id": "stureby",
+        "connections": {
+          "sw": "bandhagen"
+        }
+      }, {
+        "name": "Bandhagen",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "bandhagen",
+        "connections": {
+          "ne": "stureby",
+          "sw": "högdalen"
+        }
+      }, {
+        "name": "Högdalen",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "högdalen",
+        "connections": {
+          "ne": "bandhagen"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1956-11-01",
+    "stations": [
+      {
+        "id": "vällingby",
+        "connections": {
+          "w": "johannelund"
+        }
+      }, {
+        "name": "Johannelund",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "johannelund",
+        "connections": {
+          "e": "vällingby",
+          "w": "hässelbygård"
+        }
+      }, {
+        "name": "Hässelby gård",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "hässelbygård",
+        "connections": {
+          "e": "johannelund"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1957-11-24",
+    "stations": [
+      {
+        "id": "hötorget",
+        "newName": "Hötorget",
+        "connections": {
+          "s": "tcentralen"
+        }
+      }, {
+        "name": "T-Centralen",
+        "textAnchor": "start",
+        "textAngle": 45,
+        "id": "tcentralen",
+        "connections": {
+          "n": "hötorget",
+          "s": "gamlastan"
+        }
+      }, {
+        "name": "Gamla stan",
+        "textAnchor": "start",
+        "textAngle": 45,
+        "id": "gamlastan",
+        "connections": {
+          "n": "tcentralen",
+          "s": "slussen"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1958-04-17",
+    "stations": [
+      {
+        "id": "skärmarbrink",
+        "connections": {
+          "se": "hammarbyhöjden"
+        }
+      }, {
+        "name": "Hammarbyhöjden",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "hammarbyhöjden",
+        "connections": {
+          "nw": "skärmarbrink"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1958-11-18",
+    "stations": [
+      {
+        "id": "hässelbygård",
+        "connections": {
+          "w": "hässelbystrand"
+        }
+      }, {
+        "name": "Hässelby strand",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "hässelbystrand",
+        "connections": {
+          "e": "hässelbygård"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1958-11-18",
+    "stations": [
+      {
+        "id": "hökarängen",
+        "connections": {
+          "s": "farsta"
+        }
+      }, {
+        "name": "Farsta",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "farsta",
+        "connections": {
+          "n": "hökarängen"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1958-11-18",
+    "stations": [
+      {
+        "id": "hammarbyhöjden",
+        "connections": {
+          "se": "björkhagen"
+        }
+      }, {
+        "name": "Björkhagen",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "björkhagen",
+        "connections": {
+          "nw": "hammarbyhöjden",
+          "se": "kärrtorp"
+        }
+      }, {
+        "name": "Kärrtorp",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "kärrtorp",
+        "connections": {
+          "nw": "björkhagen",
+          "se": "bagis"
+        }
+      }, {
+        "name": "Bagarmossen",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "bagis",
+        "connections": {
+          "nw": "kärrtorp"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1959-11-14",
+    "stations": [
+      {
+        "id": "högdalen",
+        "connections": {
+          "sw": "rågsved"
+        }
+      }, {
+        "name": "Rågsved",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "rågsved",
+        "connections": {
+          "ne": "högdalen"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1960-12-01",
+    "stations": [
+      {
+        "id": "rågsved",
+        "connections": {
+          "sw": "hagsätra"
+        }
+      }, {
+        "name": "Hagsätra",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "hagsätra",
+        "connections": {
+          "ne": "rågsved"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1964-04-05",
+    "stations": [
+      {
+        "id": "tcentralen",
+        "connections": {
+          "s": "gamlastan"
+        }
+      }, {
+        "id": "gamlastan",
+        "connections": {
+          "n": "tcentralen",
+          "s": "slussen"
+        }
+      }, {
+        "id": "slussen",
+        "connections": {
+          "n": "gamlastan",
+          "w": "mariatorget"
+        }
+      }, {
+        "name": "Mariatorget",
+        "textAnchor": "start",
+        "textAngle": 90,
+        "id": "mariatorget",
+        "connections": {
+          "e": "slussen",
+          "w": "zinken"
+        }
+      }, {
+        "name": "Zinkensdamm",
+        "textAnchor": "start",
+        "textAngle": 90,
+        "id": "zinken",
+        "connections": {
+          "e": "mariatorget",
+          "sw": "hornstull"
+        }
+      }, {
+        "name": "Hornstull",
+        "textAnchor": "start",
+        "textAngle": 90,
+        "id": "hornstull",
+        "connections": {
+          "ne": "zinken",
+          "sw": "liljeholmen"
+        }
+      }, {
+        "name": "Liljeholmen",
+        "textAnchor": "start",
+        "textAngle": 90,
+        "id": "liljeholmen",
+        "connections": {
+          "ne": "hornstull",
+          "sw": "kransen"
+        }
+      }, {
+        "name": "Midsommarkransen",
+        "textAnchor": "start",
+        "textAngle": 90,
+        "id": "kransen",
+        "connections": {
+          "ne": "liljeholmen",
+          "sw": "telefonplan"
+        }
+      }, {
+        "name": "Telefonplan",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "telefonplan",
+        "connections": {
+          "ne": "kransen",
+          "sw": "hägerstensåsen"
+        }
+      }, {
+        "name": "Hägerstensåsen",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "hägerstensåsen",
+        "connections": {
+          "ne": "telefonplan",
+          "sw": "västertorp"
+        }
+      }, {
+        "name": "Västertorp",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "västertorp",
+        "connections": {
+          "ne": "hägerstensåsen",
+          "sw": "fruängen"
+        }
+      }, {
+        "name": "Fruängen",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "fruängen",
+        "connections": {
+          "ne": "västertorp"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1964-04-05",
+    "stations": [
+      {
+        "id": "liljeholmen",
+        "connections": {
+          "w": "aspudden"
+        }
+      }, {
+        "name": "Aspudden",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "aspudden",
+        "connections": {
+          "e": "liljeholmen",
+          "w": "örnsberg"
+        }
+      }, {
+        "name": "Örnsberg",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "örnsberg",
+        "connections": {
+          "e": "aspudden"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1964-05-16",
+    "stations": [
+      {
+        "id": "örnsberg",
+        "connections": {
+          "w": "axelsberg"
+        }
+      }, {
+        "name": "Axelsberg",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "axelsberg",
+        "connections": {
+          "e": "örnsberg",
+          "w": "mälarhöjden"
+        }
+      }, {
+        "name": "Mälarhöjden",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "mälarhöjden",
+        "connections": {
+          "e": "axelsberg",
+          "sw": "bredäng"
+        }
+      }, {
+        "name": "Bredäng",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "bredäng",
+        "connections": {
+          "ne": "mälarhöjden",
+          "sw": "sätra"
+        }
+      }, {
+        "name": "Sätra",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "sätra",
+        "connections": {
+          "ne": "bredäng"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1964-05-16",
+    "stations": [
+      {
+        "id": "tcentralen",
+        "connections": {
+          "ne": "östermalmstorg"
+        }
+      }, {
+        "name": "Östermalmstorg",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "östermalmstorg",
+        "connections": {
+          "sw": "tcentralen"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1967-03-01",
+    "stations": [
+      {
+        "id": "sätra",
+        "connections": {
+          "sw": "skärholmen"
+        }
+      }, {
+        "name": "Skärholmen",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "skärholmen",
+        "connections": {
+          "ne": "sätra"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1967-09-02",
+    "stations": [
+      {
+        "id": "östermalmstorg",
+        "connections": {
+          "ne": "karlaplan"
+        }
+      }, {
+        "name": "Karlaplan",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "karlaplan",
+        "connections": {
+          "sw": "östermalmstorg",
+          "ne": "gärdet"
+        }
+      }, {
+        "name": "Gärdet",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "gärdet",
+        "connections": {
+          "sw": "karlaplan",
+          "ne": "ropsten"
+        }
+      }, {
+        "name": "Ropsten",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "ropsten",
+        "connections": {
+          "sw": "gärdet"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1967-12-02",
+    "stations": [
+      {
+        "id": "skärholmen",
+        "connections": {
+          "sw": "vårberg"
+        }
+      }, {
+        "name": "Vårberg",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "vårberg",
+        "connections": {
+          "ne": "skärholmen"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1971-08-29",
+    "stations": [
+      {
+        "id": "farsta",
+        "connections": {
+          "s": "farstastrand"
+        }
+      }, {
+        "name": "Farsta strand",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "farstastrand",
+        "connections": {
+          "n": "farsta"
+        }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1972-10-01",
+    "stations": [
+      {
+        "id": "vårberg",
+        "connections": {
+          "sw": "vårbygård"
+        }
+      }, {
+        "name": "Vårby gård",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "vårbygård",
+        "connections": {
+          "ne": "vårberg",
+          "sw": "masmo"
+        }
+      }, {
+        "name": "Masmo",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "masmo",
+        "connections": {
+          "ne": "vårbygård",
+          "sw": "fittja"
+        }
+      }, {
+        "name": "Fittja",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "fittja",
+        "connections": {
+          "ne": "masmo"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1973-09-30",
+    "stations": [
+      {
+        "id": "östermalmstorg",
+        "connections": {
+          "n": "stadion"
+        }
+      }, {
+        "name": "Stadion",
+        "textAnchor": "end",
+        "textAngle": 45,
+        "id": "stadion",
+        "connections": {
+          "s": "östermalmstorg",
+          "n": "tekniskahögskolan"
+        }
+      }, {
+        "name": "Tekniska högskolan",
+        "textAnchor": "end",
+        "textAngle": 45,
+        "id": "tekniskahögskolan",
+        "connections": {
+          "s": "stadion"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1975-01-12",
+    "stations": [
+      {
+        "id": "tekniskahögskolan",
+        "connections": {
+          "n": "universitetet"
+        }
+      }, {
+        "name": "Universitetet",
+        "textAnchor": "end",
+        "textAngle": 45,
+        "id": "universitetet",
+        "connections": {
+          "s": "tekniskahögskolan"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1975-01-12",
+    "stations": [
+      {
+        "id": "fittja",
+        "connections": {
+          "sw": "alby"
+        }
+      }, {
+        "name": "Alby",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "alby",
+        "connections": {
+          "ne": "fittja",
+          "sw": "hallunda"
+        }
+      }, {
+        "name": "Hallunda",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "hallunda",
+        "connections": {
+          "ne": "alby",
+          "sw": "norsborg"
+        }
+      }, {
+        "name": "Norsborg",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "norsborg",
+        "connections": {
+          "ne": "hallunda"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1975-08-31",
+    "stations": [
+      {
+        "id": "tcentralen",
+        "connections": {
+          "w": "rådhuset"
+        }
+      }, {
+        "name": "Rådhuset",
+        "textAnchor": "start",
+        "textAngle": 90,
+        "id": "rådhuset",
+        "connections": {
+          "e": "tcentralen",
+          "sw": "fridhemsplan"
+        }
+      }, {
+        "id": "fridhemsplan",
+        "connections": {
+          "ne": "rådhuset",
+          "nw": {
+            "name": "stadshagen",
+            "distance": 3
+          }
+        }
+      }, {
+        "name": "Stadshagen",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "stadshagen",
+        "connections": {
+          "se": "fridhemsplan",
+          "w": "västraskogen"
+        }
+      }, {
+        "name": "Västra skogen",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "västraskogen",
+        "connections": {
+          "e": "stadshagen",
+          "nw": "solnacentrum"
+        }
+      }, {
+        "name": "Solna centrum",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "solnacentrum",
+        "connections": {
+          "se": "västraskogen",
+          "nw": "näckrosen"
+        }
+      }, {
+        "name": "Näckrosen",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "näckrosen",
+        "connections": {
+          "se": "solnacentrum",
+          "nw": "hallonbergen"
+        }
+      }, {
+        "name": "Hallonbergen",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "hallonbergen",
+        "connections": {
+          "se": "näckrosen",
+          "w": {
+            "name": "rinkeby",
+            "distance": 3
+          }
+        }
+      }, {
+        "name": "Rinkeby",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "rinkeby",
+        "connections": {
+          "e": "hallonbergen",
+          "nw": "tensta"
+        }
+      }, {
+        "name": "Tensta",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "tensta",
+        "connections": {
+          "se": "rinkeby",
+          "nw": "hjulsta"
+        }
+      }, {
+        "name": "Hjulsta",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "hjulsta",
+        "connections": {
+          "se": "tensta"
+        }
+      }
+    ],
+    "line": "blue"
+  }, {
+    "date": "1977-06-05",
+    "stations": [
+      {
+        "id": "hallonbergen",
+        "connections": {
+          "nw": "kista"
+        }
+      }, {
+        "name": "Kista",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "kista",
+        "connections": {
+          "se": "hallonbergen",
+          "nw": "husby"
+        }
+      }, {
+        "name": "Husby",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "husby",
+        "connections": {
+          "se": "kista",
+          "nw": "akalla"
+        }
+      }, {
+        "name": "Akalla",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "akalla",
+        "connections": {
+          "se": "husby"
+        }
+      }
+    ],
+    "line": "blue"
+  }, {
+    "date": "1977-10-30",
+    "stations": [
+      {
+        "id": "tcentralen",
+        "connections": {
+          "e": "kungsträdgården"
+        }
+      }, {
+        "name": "Kungsträdgården",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "kungsträdgården",
+        "connections": {
+          "w": "tcentralen"
+        }
+      }
+    ],
+    "line": "blue"
+  }, {
+    "date": "1978-01-29",
+    "stations": [
+      {
+        "id": "universitetet",
+        "connections": {
+          "n": "bergshamra"
+        }
+      }, {
+        "name": "Bergshamra",
+        "textAnchor": "end",
+        "textAngle": 45,
+        "id": "bergshamra",
+        "connections": {
+          "n": "danderydssjukhus",
+          "s": "universitetet"
+        }
+      }, {
+        "name": "Danderyds sjukhus",
+        "textAnchor": "end",
+        "textAngle": 45,
+        "id": "danderydssjukhus",
+        "connections": {
+          "n": "mörby",
+          "s": "bergshamra"
+        }
+      }, {
+        "name": "Mörby centrum",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "mörby",
+        "connections": {
+          "s": "danderydssjukhus"
+        }
+      }
+    ],
+    "line": "red"
+  }, {
+    "date": "1985-08-19",
+    "stations": [
+      {
+        "id": "västraskogen",
+        "connections": {
+          "w": "huvudsta"
+        }
+      }, {
+        "name": "Huvudsta",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "huvudsta",
+        "connections": {
+          "w": "solnastrand",
+          "e": "västraskogen"
+        }
+      }, {
+        "name": "Solna strand",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "solnastrand",
+        "connections": {
+          "w": "sundbybergscentrum",
+          "e": "huvudsta"
+        }
+      }, {
+        "name": "Sundbybergs centrum",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "sundbybergscentrum",
+        "connections": {
+          "nw": "duvbo",
+          "e": "solnastrand"
+        }
+      }, {
+        "name": "Duvbo",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "duvbo",
+        "connections": {
+          "nw": "rissne",
+          "se": "sundbybergscentrum"
+        }
+      }, {
+        "name": "Rissne",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "rissne",
+        "connections": {
+          "nw": "rinkeby",
+          "se": "duvbo"
+        }
+      }, {
+        "type": "deleteConnection",
+        "from": "hallonbergen",
+        "direction": "w"
+      }
+    ],
+    "line": "blue"
+  }, {
+    "date": "1994-08-15",
+    "stations": [
+      {
+        "id": "bagis",
+        "connections": {
+          "se": "skarpnäck"
+        }
+      }, {
+        "name": "Skarpnäck",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "skarpnäck",
+        "connections": {
+          "nw": "bagis"
+        }
+      }
+    ],
+    "line": "green"
+  }
+]
