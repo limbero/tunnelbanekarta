@@ -253,8 +253,17 @@
         "textAngle": -45,
         "id": "abrahamsberg",
         "connections": {
-          "w": "åkeshov",
+          "w": "brommaplan",
           "e": "storamossen"
+        }
+      }, {
+        "name": "Brommaplan",
+        "textAnchor": "end",
+        "textAngle": -45,
+        "id": "brommaplan",
+        "connections": {
+          "w": "åkeshov",
+          "e": "abrahamsberg"
         }
       }, {
         "name": "Åkeshov",
@@ -263,7 +272,7 @@
         "id": "åkeshov",
         "connections": {
           "w": "ängbyplan",
-          "e": "abrahamsberg"
+          "e": "brommaplan"
         }
       }, {
         "name": "Ängbyplan",
