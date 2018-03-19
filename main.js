@@ -107,16 +107,18 @@ async function main() {
         stationText.classList.add('shown');
       }
 
-      alreadyDrawnStations[station.id] = {
-        station: station,
-        stationDot: stationDot,
-        stationText: stationText,
-        connections: connectionDirections.map(dir => {
-          return {
-            name: station.connections[dir]
-          };
-        })
-      };
+      if (typeof alreadyDrawnStations[station.id] === 'undefined') {
+        alreadyDrawnStations[station.id] = {
+          station: station,
+          stationDot: stationDot,
+          stationText: stationText,
+          connections: connectionDirections.map(dir => {
+            return {
+              name: station.connections[dir]
+            };
+          })
+        };
+      }
 
       prevStation = station;
       await sleep(500);

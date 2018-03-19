@@ -111,7 +111,7 @@
           "sw": "globen"
         }
       }, {
-        "name": "Globen",
+        "name": "Slakthuset",
         "textAnchor": "end",
         "textAngle": 0,
         "id": "globen",
@@ -498,6 +498,16 @@
         "connections": {
           "nw": "kärrtorp"
         }
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "1958-11-19",
+    "stations": [
+      {
+        "id": "globen",
+        "newName": "Isstadion",
+        "connections": {}
       }
     ],
     "line": "green"
@@ -1164,7 +1174,7 @@
           "e": "västraskogen"
         }
       }, {
-        "name": "Solna strand",
+        "name": "Vreten",
         "textAnchor": "end",
         "textAngle": -45,
         "id": "solnastrand",
@@ -1225,5 +1235,25 @@
       }
     ],
     "line": "green"
+  }, {
+    "date": "1989-08-20",
+    "stations": [
+      {
+        "id": "globen",
+        "newName": "Globen",
+        "connections": {}
+      }
+    ],
+    "line": "green"
+  }, {
+    "date": "2014-08-18",
+    "stations": [
+      {
+        "id": "solnastrand",
+        "newName": "Solna strand",
+        "connections": {}
+      }
+    ],
+    "line": "blue"
   }
 ]
