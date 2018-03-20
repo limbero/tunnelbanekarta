@@ -565,6 +565,16 @@
     ],
     "line": "green"
   }, {
+    "date": "1962-05-05",
+    "stations": [
+      {
+        "id": "ängbyplan",
+        "newName": "Ängbyplan",
+        "connections": {}
+      }
+    ],
+    "line": "green"
+  }, {
     "date": "1964-04-05",
     "stations": [
       {
@@ -667,16 +677,6 @@
       }
     ],
     "line": "red"
-  }, {
-    "date": "1962-05-05",
-    "stations": [
-      {
-        "id": "ängbyplan",
-        "newName": "Ängbyplan",
-        "connections": {}
-      }
-    ],
-    "line": "green"
   }, {
     "date": "1964-04-05",
     "stations": [
