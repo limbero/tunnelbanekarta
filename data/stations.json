@@ -29,7 +29,7 @@
           "s": "gullmars"
         }
       }, {
-        "name": "Gullmarsplan",
+        "name": "Johanneshov",
         "textAnchor": "end",
         "textAngle": 0,
         "id": "gullmars",
@@ -38,7 +38,7 @@
           "s": "skärmarbrink"
         }
       }, {
-        "name": "Skärmarbrink",
+        "name": "Hammarby",
         "textAnchor": "start",
         "textAngle": 0,
         "id": "skärmarbrink",
@@ -65,7 +65,7 @@
           "s": "skogskyrkogården"
         }
       }, {
-        "name": "Skogskyrkogården",
+        "name": "Kyrkogården",
         "textAnchor": "end",
         "textAngle": -45,
         "id": "skogskyrkogården",
@@ -275,7 +275,7 @@
           "e": "brommaplan"
         }
       }, {
-        "name": "Ängbyplan",
+        "name": "Färjestadsvägen",
         "textAnchor": "end",
         "textAngle": -45,
         "id": "ängbyplan",
@@ -387,7 +387,7 @@
           "s": "tcentralen"
         }
       }, {
-        "name": "T-Centralen",
+        "name": "Centralen",
         "textAnchor": "start",
         "textAngle": 45,
         "id": "tcentralen",
@@ -408,10 +408,25 @@
     ],
     "line": "green"
   }, {
+    "date": "1958-01-27",
+    "stations": [
+      {
+        "newName": "T-Centralen",
+        "id": "tcentralen",
+        "connections": {}
+      }
+    ],
+    "line": "green"
+  }, {
     "date": "1958-04-17",
     "stations": [
       {
+        "id": "gullmars",
+        "newName": "Gullmarsplan",
+        "connections": {}
+      }, {
         "id": "skärmarbrink",
+        "newName": "Skärmarbrink",
         "connections": {
           "se": "hammarbyhöjden"
         }
@@ -652,6 +667,16 @@
       }
     ],
     "line": "red"
+  }, {
+    "date": "1962-05-05",
+    "stations": [
+      {
+        "id": "ängbyplan",
+        "newName": "Ängbyplan",
+        "connections": {}
+      }
+    ],
+    "line": "green"
   }, {
     "date": "1964-04-05",
     "stations": [
