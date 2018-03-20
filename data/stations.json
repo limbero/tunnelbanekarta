@@ -464,6 +464,10 @@
     "date": "1958-11-18",
     "stations": [
       {
+        "id": "skogskyrkogården",
+        "newName": "Skogskyrkogården",
+        "connections": {}
+      }, {
         "id": "hökarängen",
         "connections": {
           "s": "farsta"
