@@ -1135,7 +1135,10 @@
       {
         "id": "tcentralen",
         "connections": {
-          "e": "kungsträdgården"
+          "e": {
+            "name": "kungsträdgården",
+            "distance": 1
+          }
         }
       }, {
         "name": "Kungsträdgården",
@@ -1281,6 +1284,191 @@
         "id": "solnastrand",
         "newName": "Solna strand",
         "connections": {}
+      }
+    ],
+    "line": "blue"
+  }, {
+    "date": "2026-??-??",
+    "stations": [
+      {
+        "id": "akalla",
+        "connections": {
+          "w": "barkarbystaden"
+        }
+      }, {
+        "name": "Barkarbystaden",
+        "textAnchor": "start",
+        "textAngle": -45,
+        "id": "barkarbystaden",
+        "connections": {
+          "e": "akalla",
+          "w": "barkarby"
+        }
+      }, {
+        "name": "Barkarby",
+        "textAnchor": "start",
+        "textAngle": -45,
+        "id": "barkarby",
+        "connections": {
+          "e": "barkarbystaden"
+        }
+      }
+    ],
+    "line": "blue"
+  }, {
+    "date": "202?-??-??",
+    "stations": [
+      {
+        "id": "kungsträdgården",
+        "connections": {
+          "se": {
+            "name": "sofia",
+            "distance": 2
+          }
+        }
+      }, {
+        "name": "Sofia",
+        "textAnchor": "start",
+        "textAngle": 0,
+        "id": "sofia",
+        "connections": {
+          "nw": "kungsträdgården"
+        }
+      }, {
+        "id": "sofia",
+        "connections": {
+          "sw": {
+            "name": "gullmars",
+            "distance": 3
+          }
+        }
+      }, {
+        "id": "gullmars",
+        "connections": {
+          "ne": "sofia"
+        }
+      }, {
+        "type": "deleteConnection",
+        "from": "globen",
+        "direction": "sw"
+      }, {
+        "id": "enskedegård",
+        "type": "deleteStation"
+      }, {
+        "type": "deleteConnection",
+        "from": "enskedegård",
+        "direction": "sw"
+      }, {
+        "type": "changeConnectionColor",
+        "from": "gullmars",
+        "direction": "sw"
+      }, {
+        "type": "changeStationColor",
+        "id": "globen"
+      }, {
+        "id": "globen",
+        "newName": "Slakthusområdet",
+        "connections": {}
+      }, {
+        "id": "globen",
+        "connections": {
+          "sw": {
+            "name": "sockenplan",
+            "distance": 2
+          }
+        }
+      }, {
+        "type": "changeStationColor",
+        "id": "sockenplan"
+      }, {
+        "type": "changeConnectionColor",
+        "from": "sockenplan",
+        "direction": "sw"
+      }, {
+        "type": "changeStationColor",
+        "id": "svedmyra"
+      }, {
+        "type": "changeConnectionColor",
+        "from": "svedmyra",
+        "direction": "sw"
+      }, {
+        "type": "changeStationColor",
+        "id": "stureby"
+      }, {
+        "type": "changeConnectionColor",
+        "from": "stureby",
+        "direction": "sw"
+      }, {
+        "type": "changeStationColor",
+        "id": "bandhagen"
+      }, {
+        "type": "changeConnectionColor",
+        "from": "bandhagen",
+        "direction": "sw"
+      }, {
+        "type": "changeStationColor",
+        "id": "högdalen"
+      }, {
+        "type": "changeConnectionColor",
+        "from": "högdalen",
+        "direction": "sw"
+      }, {
+        "type": "changeStationColor",
+        "id": "rågsved"
+      }, {
+        "type": "changeConnectionColor",
+        "from": "rågsved",
+        "direction": "sw"
+      }, {
+        "type": "changeStationColor",
+        "id": "hagsätra"
+      }
+    ],
+    "line": "blue"
+  }, {
+    "date": "202?-??-??",
+    "stations": [
+      {
+        "id": "sofia",
+        "connections": {
+          "se": "hammarbykanal"
+        }
+      }, 
+      {
+        "name": "Hammarby kanal",
+        "textAnchor": "start",
+        "textAngle": -45,
+        "id": "hammarbykanal",
+        "connections": {
+          "nw": "sofia",
+          "e": "sickla"
+        }
+      }, {
+        "name": "Sickla",
+        "textAnchor": "start",
+        "textAngle": -45,
+        "id": "sickla",
+        "connections": {
+          "w": "hammarbykanal",
+          "e": "järla"
+        }
+      }, {
+        "name": "Järla",
+        "textAnchor": "start",
+        "textAngle": -45,
+        "id": "järla",
+        "connections": {
+          "w": "sickla",
+          "e": "nacka"
+        }
+      }, {
+        "name": "Nacka",
+        "textAnchor": "start",
+        "textAngle": -45,
+        "id": "nacka",
+        "connections": {
+          "w": "järla"
+        }
       }
     ],
     "line": "blue"

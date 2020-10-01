@@ -153,6 +153,17 @@ let alreadyDrawnStations = {};
 let lineToColor = {};
 
 let title;
+const opposites = {
+  n: "s",
+  ne: "sw",
+  e: "w",
+  se: "nw",
+  s: "n",
+  sw: "ne",
+  w: "e",
+  nw: "se",
+};
+const colors = ["red", "green", "blue", "yellow"];
 
 async function main() {
   let style = getComputedStyle(document.body);
@@ -214,11 +225,47 @@ async function main() {
     for (let j = 0; j < instant.stations.length; j++) {
       const station = instant.stations[j];
 
-      if (typeof station.type !== 'undefined' && station.type === 'deleteConnection') {
-        const thisConn = document.querySelector('.' + station.from + station.direction);
-        thisConn.classList.add('noanim');
-        await sleep(50);
-        thisConn.classList.add('hidden');
+      if (typeof station.type !== 'undefined') {
+        if (station.type === 'deleteConnection') {
+          const thisConn = document.querySelector('.' + station.from + station.direction);
+          thisConn.classList.add('noanim');
+          await sleep(50);
+          thisConn.classList.add('hidden');
+        } else if (station.type === 'deleteStation') {
+          Object.values(alreadyDrawnStations[station.id].stationDots).map(stationDot => stationDot.classList.remove('shown'));
+          alreadyDrawnStations[station.id].stationText.classList.remove('shown');
+        } else if (station.type === 'changeConnectionColor') {
+          const thisConn = document.querySelector('.' + station.from + station.direction);
+          const oldColor = colors.filter(color => color !== instant.line && thisConn.classList.contains(color))[0];
+          thisConn.classList.remove(oldColor);
+          thisConn.classList.add(instant.line);
+          thisConn.setAttribute('stroke', lineToColor[instant.line]);
+          thisConn.setAttribute('transform', '');
+          if (instant.line === 'red') {
+            thisConn.setAttribute('transform', 'translate(-5)');
+          } else if (instant.line === 'blue') {
+            thisConn.setAttribute('transform', 'translate(0 -5)');
+            thisConn.parentNode.insertBefore(thisConn, thisConn.parentNode.firstChild);
+          }
+          await sleep(50);
+        } else if (station.type === 'changeStationColor') {
+          const thisStation = alreadyDrawnStations[station.id];
+          if (Object.keys(thisStation.stationDots).length > 1) {
+            continue;
+          }
+          const [oldColor, thisDot] = Object.entries(thisStation.stationDots)[0];
+          thisDot.classList.remove(oldColor);
+          thisDot.classList.add(instant.line);
+          thisDot.setAttribute('fill', lineToColor[instant.line]);
+          thisDot.setAttribute('transform', '');
+          if (instant.line === 'red') {
+            thisDot.setAttribute('transform', 'translate(-5)');
+          } else if (instant.line === 'blue') {
+            thisDot.setAttribute('transform', 'translate(0 -5)');
+            thisDot.parentNode.insertBefore(thisDot, thisDot.parentNode.firstChild);
+          }
+          await sleep(50);
+        }
         continue;
       }
 
@@ -238,10 +285,21 @@ async function main() {
       }
 
       let stationDot = newStation(coords.x, coords.y, instant.line);
-      if (instant.line === 'blue') {
-        g.insertBefore(stationDot, g.firstChild);
+      if (alreadyDrawnStations[station.id]) {
+        if (!alreadyDrawnStations[station.id].stationDots[instant.line]) {
+          alreadyDrawnStations[station.id].stationDots[instant.line] = stationDot;
+          if (instant.line === 'blue') {
+            g.insertBefore(stationDot, g.firstChild);
+          } else {
+            g.appendChild(stationDot);
+          }
+        }
       } else {
-        g.appendChild(stationDot);
+        if (instant.line === 'blue') {
+          g.insertBefore(stationDot, g.firstChild);
+        } else {
+          g.appendChild(stationDot);
+        }
       }
 
       const connectionDirections = Object.keys(station.connections);
@@ -256,9 +314,13 @@ async function main() {
           const moved = moveXStepsInDirection(steps, connectionDirections[k], coords);
           connection = newConnection(coords.x, coords.y, moved.x, moved.y, instant.line);
           connection.classList.add(station.id+connectionDirections[k]);
+          connection.direction = connectionDirections[k];
           coords = moved;
           break;
         }
+      }
+      if (alreadyDrawnStations[station.id] && connection) {
+        alreadyDrawnStations[station.id].connectionSvgs[connection.direction] = connection;
       }
 
       await sleep(5);
@@ -271,17 +333,24 @@ async function main() {
         alreadyDrawnStations[station.id] = {
           station: station,
           stationDot: stationDot,
+          stationDots: {
+            [instant.line]: stationDot
+          },
           stationText: stationText,
+          connectionSvgs: {},
           connections: connectionDirections.map(dir => {
             return {
               name: station.connections[dir]
             };
           })
         };
+        if (connection) {
+          alreadyDrawnStations[station.id].connectionSvgs[connection.direction] = connection;
+        }
       }
 
       prevStation = station;
-      await sleep(30);
+      await sleep(500);
       if (typeof connection !== 'undefined') {
         if (instant.line === 'blue') {
           g.insertBefore(connection, g.firstChild);
