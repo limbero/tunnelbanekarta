@@ -54,7 +54,45 @@ window.addEventListener(wheelEvent, (e) => {
   scaleMap(v, e);
 }, wheelOpt); // modern desktop
 
-let oldTouch;
+let dragging = false;
+window.addEventListener('mousedown', (e) => {
+  dragging = true;
+  oldTouchClick = {
+    x: e.clientX,
+    y: e.clientY,
+  };
+  e.preventDefault();
+}, false);
+window.addEventListener('mouseup', (e) => {
+  dragging = false;
+  oldTouchClick = undefined;
+  e.preventDefault();
+}, false);
+window.addEventListener('mousemove', (e) => {
+  if (!dragging) {
+    return;
+  }
+  pan(e);
+  e.preventDefault;
+}, false);
+
+function pan(touchClick) {
+  const newTouch = {
+    x: touchClick.clientX,
+    y: touchClick.clientY,
+  };
+  const diff = {
+    x: oldTouchClick.x - newTouch.x,
+    y: oldTouchClick.y - newTouch.y,
+  };
+
+  translateOffset.x -= diff.x;
+  translateOffset.y -= diff.y;
+
+  outerG.style.transform = `translate(${translateOffset.x}px, ${translateOffset.y}px)`;
+  oldTouchClick = newTouch;
+}
+let oldTouchClick;
 let translateOffset = {
   x: 0,
   y: 0,
@@ -66,27 +104,14 @@ window.addEventListener('touchmove', (e) => {
     return;
   }
   oldPinch = undefined;
-  if (!oldTouch) {
-    oldTouch = {
+  if (!oldTouchClick) {
+    oldTouchClick = {
       x: e.changedTouches[0].clientX,
       y: e.changedTouches[0].clientY,
     };
     return;
   }
-  const newTouch = {
-    x: e.changedTouches[0].clientX,
-    y: e.changedTouches[0].clientY,
-  };
-  const diff = {
-    x: oldTouch.x - newTouch.x,
-    y: oldTouch.y - newTouch.y,
-  };
-
-  translateOffset.x -= diff.x;
-  translateOffset.y -= diff.y;
-
-  outerG.style.transform = `translate(${translateOffset.x}px, ${translateOffset.y}px)`;
-  oldTouch = newTouch;
+  pan(e.changedTouches[0]);
   e.preventDefault();
 }, wheelOpt); // mobile
 
@@ -99,8 +124,8 @@ function measureDistance(e) {
   return Math.sqrt(diff.x ** 2 + diff.y ** 2)
 }
 function handlePinchZoom(e) {
-  if (oldTouch) {
-    oldTouch = undefined;
+  if (oldTouchClick) {
+    oldTouchClick = undefined;
   }
   if (!oldPinchDistance) {
     oldPinchDistance = measureDistance(e);
@@ -115,7 +140,7 @@ function handlePinchZoom(e) {
   oldPinchDistance = newDistance;
 }
 window.addEventListener('touchend', () => {
-  oldTouch = undefined;
+  oldTouchClick = undefined;
   oldPinchDistance = undefined;
 }, wheelOpt);
 
@@ -256,7 +281,7 @@ async function main() {
       }
 
       prevStation = station;
-      await sleep(300);
+      await sleep(30);
       if (typeof connection !== 'undefined') {
         if (instant.line === 'blue') {
           g.insertBefore(connection, g.firstChild);
@@ -266,6 +291,7 @@ async function main() {
       }
     }
   }
+  console.log('done drawing');
 }
 
 function moveXStepsInDirection (x, direction, coords) {
@@ -316,7 +342,7 @@ function newStation(x, y, line) {
   if (line === 'red') {
     station.setAttribute('transform', 'translate(-5)');
   } else if (line === 'blue') {
-    station.setAttribute('transform', 'translate(5)');
+    station.setAttribute('transform', 'translate(0 -5)');
   }
 
   return station;
@@ -343,7 +369,7 @@ function newStationName(x, y, angle, anchor, text, line) {
   if (line === 'red') {
     transform += 'translate(-5) ';
   } else if (line === 'blue') {
-    transform += 'translate(5) ';
+    transform += 'translate(0 -5) ';
   }
   transform += `rotate(${angle}, ${anglex}, ${y})`;
   name.setAttribute('transform', transform);
@@ -363,7 +389,7 @@ function newConnection(x1, y1, x2, y2, line) {
   if (line === 'red') {
     conn.setAttribute('transform', 'translate(-5)');
   } else if (line === 'blue') {
-    conn.setAttribute('transform', 'translate(5)');
+    conn.setAttribute('transform', 'translate(0 -5)');
   }
 
   return conn;
