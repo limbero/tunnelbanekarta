@@ -54,3 +54,13 @@ svg line.noanim.hidden {
     stroke-dashoffset: 800;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .github-corner svg {
+    width: 60px;
+    height: 60px;
+  }
+  svg text#title {
+    font-size: 1.5em;
+  }
+}

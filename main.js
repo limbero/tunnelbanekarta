@@ -1,5 +1,90 @@
 const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
 
+let lastZoomMousePos;
+let g, outerG;
+let currentScale = 1;
+
+function scaleMap(velocity, e) {
+  if (g && (currentScale > 0.5 || velocity > 0) && (currentScale < 5 || velocity < 0)) {
+    const newScale = currentScale + velocity / 100;
+    currentScale = Math.min(Math.max(newScale, 0.5), 3);
+    g.style.transform = `scale(${currentScale})`;
+
+    let newOrigin;
+    if (lastZoomMousePos) {
+      newOrigin = { ...lastZoomMousePos };
+      moveVel = Math.abs(velocity);
+      if (newOrigin.x > e.clientX) {
+        newOrigin.x = Math.max(newOrigin.x-moveVel, e.clientX);
+      } else if (newOrigin.x < e.clientX) {
+        newOrigin.x = Math.min(newOrigin.x+moveVel, e.clientX);
+      }
+
+      if (newOrigin.y > e.clientY) {
+        newOrigin.y = Math.max(newOrigin.y-moveVel, e.clientY);
+      } else if (newOrigin.y < e.clientY) {
+        newOrigin.y = Math.min(newOrigin.y+moveVel, e.clientY);
+      }
+    } else {
+      newOrigin = {
+        x: e.clientX,
+        y: e.clientY,
+      };
+    }
+    g.style.transformOrigin = `${newOrigin.x}px ${newOrigin.y}px`;
+    lastZoomMousePos = newOrigin;
+  }
+  e.preventDefault();
+}
+
+// modern Chrome requires { passive: false } when adding event
+let supportsPassive = false;
+try {
+  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+    get: function () { supportsPassive = true; }
+  }));
+} catch(e) {}
+
+const wheelOpt = supportsPassive ? { passive: false } : false;
+const wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+window.addEventListener('DOMMouseScroll', (e) => scaleMap(e.deltaY, e), false); // older FF
+window.addEventListener(wheelEvent, (e) => {
+  const v = e.ctrlKey ? -2 * e.deltaY : -e.deltaY;
+  scaleMap(v, e);
+}, wheelOpt); // modern desktop
+
+let oldTouch;
+let translateOffset = {
+  x: 0,
+  y: 0,
+}
+window.addEventListener('touchend', () => { oldTouch = undefined; }, wheelOpt);
+window.addEventListener('touchmove', (e) => {
+  if (!oldTouch) {
+    oldTouch = {
+      x: e.changedTouches[0].clientX,
+      y: e.changedTouches[0].clientY,
+    };
+    return;
+  }
+  const newTouch = {
+    x: e.changedTouches[0].clientX,
+    y: e.changedTouches[0].clientY,
+  };
+  const diff = {
+    x: oldTouch.x - newTouch.x,
+    y: oldTouch.y - newTouch.y,
+  };
+
+  translateOffset.x -= diff.x;
+  translateOffset.y -= diff.y;
+
+  outerG.style.transform = `translate(${translateOffset.x}px, ${translateOffset.y}px)`;
+  oldTouch = newTouch;
+  e.preventDefault();
+}, wheelOpt); // mobile
+
 document.addEventListener('DOMContentLoaded', function() {
   main();
 });
@@ -21,6 +106,22 @@ async function main() {
   svg.setAttribute('width', '100%');
   svg.setAttribute('height', '100%');
   document.body.appendChild(svg);
+
+  outerG = document.createElementNS(SVG_NAMESPACE, 'g');
+  outerG.id = 'outer-g';
+  svg.appendChild(outerG);
+
+  g = document.createElementNS(SVG_NAMESPACE, 'g');
+  g.id = 'map';
+  outerG.appendChild(g);
+
+  const titleBar = document.createElementNS(SVG_NAMESPACE, 'rect');
+  titleBar.setAttribute('x', 0);
+  titleBar.setAttribute('y', 0);
+  titleBar.setAttribute('width', '100%');
+  titleBar.setAttribute('height', 75);
+  titleBar.setAttribute('fill','#333344');
+  svg.appendChild(titleBar);
 
   const canvas = svg.getBoundingClientRect();
   const start = {
@@ -66,7 +167,7 @@ async function main() {
 
       if (typeof alreadyDrawnStations[station.id] === 'undefined') {
         stationText = newStationName(coords.x, coords.y, station.textAngle, station.textAnchor, station.name, instant.line);
-        svg.appendChild(stationText);
+        g.appendChild(stationText);
       } else {
         if  (typeof station.newName !== 'undefined') {
           alreadyDrawnStations[station.id].stationText.textContent = station.newName;
@@ -79,9 +180,9 @@ async function main() {
 
       let stationDot = newStation(coords.x, coords.y, instant.line);
       if (instant.line === 'blue') {
-        svg.insertBefore(stationDot, svg.firstChild);
+        g.insertBefore(stationDot, g.firstChild);
       } else {
-        svg.appendChild(stationDot);
+        g.appendChild(stationDot);
       }
 
       const connectionDirections = Object.keys(station.connections);
@@ -121,12 +222,12 @@ async function main() {
       }
 
       prevStation = station;
-      await sleep(500);
+      await sleep(300);
       if (typeof connection !== 'undefined') {
         if (instant.line === 'blue') {
-          svg.insertBefore(connection, svg.firstChild);
+          g.insertBefore(connection, g.firstChild);
         } else {
-          svg.appendChild(connection);
+          g.appendChild(connection);
         }
       }
     }
