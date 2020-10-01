@@ -59,8 +59,13 @@ let translateOffset = {
   x: 0,
   y: 0,
 }
-window.addEventListener('touchend', () => { oldTouch = undefined; }, wheelOpt);
 window.addEventListener('touchmove', (e) => {
+  if (e.changedTouches.length > 1) { // it's a zoom
+    handlePinchZoom(e);
+    e.preventDefault();
+    return;
+  }
+  oldPinch = undefined;
   if (!oldTouch) {
     oldTouch = {
       x: e.changedTouches[0].clientX,
@@ -84,6 +89,35 @@ window.addEventListener('touchmove', (e) => {
   oldTouch = newTouch;
   e.preventDefault();
 }, wheelOpt); // mobile
+
+let oldPinchDistance;
+function measureDistance(e) {
+  const diff = {
+    x: Math.abs(e.changedTouches[0].clientX - e.changedTouches[1].clientX),
+    y: Math.abs(e.changedTouches[0].clientY - e.changedTouches[1].clientY),
+  };
+  return Math.sqrt(diff.x ** 2 + diff.y ** 2)
+}
+function handlePinchZoom(e) {
+  if (oldTouch) {
+    oldTouch = undefined;
+  }
+  if (!oldPinchDistance) {
+    oldPinchDistance = measureDistance(e);
+    return;
+  }
+  const newDistance = measureDistance(e);
+  scaleMap(newDistance-oldPinchDistance, {
+    clientX: (e.changedTouches[0].clientX + e.changedTouches[1].clientX)/2,
+    clientY: (e.changedTouches[0].clientY + e.changedTouches[1].clientY)/2,
+    preventDefault: () => undefined,
+  });
+  oldPinchDistance = newDistance;
+}
+window.addEventListener('touchend', () => {
+  oldTouch = undefined;
+  oldPinchDistance = undefined;
+}, wheelOpt);
 
 document.addEventListener('DOMContentLoaded', function() {
   main();
