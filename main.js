@@ -60,7 +60,7 @@ let translateOffset = {
   y: 0,
 }
 window.addEventListener('touchmove', (e) => {
-  if (e.changedTouches.length > 1) { // it's a zoom
+  if (e.touches.length > 1) { // it's a zoom
     handlePinchZoom(e);
     e.preventDefault();
     return;
@@ -93,8 +93,8 @@ window.addEventListener('touchmove', (e) => {
 let oldPinchDistance;
 function measureDistance(e) {
   const diff = {
-    x: Math.abs(e.changedTouches[0].clientX - e.changedTouches[1].clientX),
-    y: Math.abs(e.changedTouches[0].clientY - e.changedTouches[1].clientY),
+    x: Math.abs(e.touches[0].clientX - e.touches[1].clientX),
+    y: Math.abs(e.touches[0].clientY - e.touches[1].clientY),
   };
   return Math.sqrt(diff.x ** 2 + diff.y ** 2)
 }
@@ -108,8 +108,8 @@ function handlePinchZoom(e) {
   }
   const newDistance = measureDistance(e);
   scaleMap(newDistance-oldPinchDistance, {
-    clientX: (e.changedTouches[0].clientX + e.changedTouches[1].clientX)/2,
-    clientY: (e.changedTouches[0].clientY + e.changedTouches[1].clientY)/2,
+    clientX: (e.touches[0].clientX + e.touches[1].clientX)/2,
+    clientY: (e.touches[0].clientY + e.touches[1].clientY)/2,
     preventDefault: () => undefined,
   });
   oldPinchDistance = newDistance;
