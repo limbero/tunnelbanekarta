@@ -170,6 +170,7 @@ async function main() {
   lineToColor['green'] = style.getPropertyValue('--green');
   lineToColor['red'] = style.getPropertyValue('--red');
   lineToColor['blue'] = style.getPropertyValue('--blue');
+  lineToColor['yellow'] = style.getPropertyValue('--yellow');
 
   const svg = document.createElementNS(SVG_NAMESPACE, 'svg');
   svg.classList.add('main');
@@ -246,6 +247,9 @@ async function main() {
           } else if (instant.line === 'blue') {
             thisConn.setAttribute('transform', 'translate(0 -5)');
             thisConn.parentNode.insertBefore(thisConn, thisConn.parentNode.firstChild);
+          } else if (instant.line === 'yellow') {
+            thisConn.setAttribute('transform', 'translate(5 -5)');
+            thisConn.parentNode.insertBefore(thisConn, thisConn.parentNode.firstChild);
           }
           await sleep(50);
         } else if (station.type === 'changeStationColor') {
@@ -262,6 +266,9 @@ async function main() {
             thisDot.setAttribute('transform', 'translate(-5)');
           } else if (instant.line === 'blue') {
             thisDot.setAttribute('transform', 'translate(0 -5)');
+            thisDot.parentNode.insertBefore(thisDot, thisDot.parentNode.firstChild);
+          } else if (instant.line === 'yellow') {
+            thisDot.setAttribute('transform', 'translate(5 -5)');
             thisDot.parentNode.insertBefore(thisDot, thisDot.parentNode.firstChild);
           }
           await sleep(50);
@@ -288,14 +295,14 @@ async function main() {
       if (alreadyDrawnStations[station.id]) {
         if (!alreadyDrawnStations[station.id].stationDots[instant.line]) {
           alreadyDrawnStations[station.id].stationDots[instant.line] = stationDot;
-          if (instant.line === 'blue') {
+          if (instant.line === 'blue' || instant.line === 'yellow') {
             g.insertBefore(stationDot, g.firstChild);
           } else {
             g.appendChild(stationDot);
           }
         }
       } else {
-        if (instant.line === 'blue') {
+        if (instant.line === 'blue' || instant.line === 'yellow') {
           g.insertBefore(stationDot, g.firstChild);
         } else {
           g.appendChild(stationDot);
@@ -320,7 +327,7 @@ async function main() {
         }
       }
       if (alreadyDrawnStations[station.id] && connection) {
-        alreadyDrawnStations[station.id].connectionSvgs[connection.direction] = connection;
+        alreadyDrawnStations[station.id].connectionSvgs[`${connection.direction}-${instant.line}`] = connection;
       }
 
       await sleep(5);
@@ -345,14 +352,14 @@ async function main() {
           })
         };
         if (connection) {
-          alreadyDrawnStations[station.id].connectionSvgs[connection.direction] = connection;
+          alreadyDrawnStations[station.id].connectionSvgs[`${connection.direction}-${instant.line}`] = connection;
         }
       }
 
       prevStation = station;
       await sleep(500);
       if (typeof connection !== 'undefined') {
-        if (instant.line === 'blue') {
+        if (instant.line === 'blue' || instant.line === 'yellow') {
           g.insertBefore(connection, g.firstChild);
         } else {
           g.appendChild(connection);
@@ -412,6 +419,8 @@ function newStation(x, y, line) {
     station.setAttribute('transform', 'translate(-5)');
   } else if (line === 'blue') {
     station.setAttribute('transform', 'translate(0 -5)');
+  } else if (line === 'yellow') {
+    station.setAttribute('transform', 'translate(5 -5)');
   }
 
   return station;
@@ -439,6 +448,8 @@ function newStationName(x, y, angle, anchor, text, line) {
     transform += 'translate(-5) ';
   } else if (line === 'blue') {
     transform += 'translate(0 -5) ';
+  } else if (line === 'yellow') {
+    transform += 'translate(5 -5) ';
   }
   transform += `rotate(${angle}, ${anglex}, ${y})`;
   name.setAttribute('transform', transform);
@@ -459,6 +470,8 @@ function newConnection(x1, y1, x2, y2, line) {
     conn.setAttribute('transform', 'translate(-5)');
   } else if (line === 'blue') {
     conn.setAttribute('transform', 'translate(0 -5)');
+  } else if (line === 'yellow') {
+    conn.setAttribute('transform', 'translate(5 -5)');
   }
 
   return conn;

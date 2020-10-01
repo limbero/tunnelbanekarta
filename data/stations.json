@@ -1316,7 +1316,7 @@
     ],
     "line": "blue"
   }, {
-    "date": "202?-??-??",
+    "date": "20XX-XX-XX",
     "stations": [
       {
         "id": "kungsträdgården",
@@ -1426,7 +1426,7 @@
     ],
     "line": "blue"
   }, {
-    "date": "202?-??-??",
+    "date": "20XX-XX-XX",
     "stations": [
       {
         "id": "sofia",
@@ -1472,5 +1472,179 @@
       }
     ],
     "line": "blue"
+  }, {
+    "date": "20XX-XX-XX",
+    "stations": [
+      {
+        "id": "odenplan",
+        "connections": {
+          "n": {
+            "name": "hagastaden",
+            "distance": 3
+          }
+        }
+      }, {
+        "name": "Hagastaden",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "hagastaden",
+        "connections": {
+          "s": "odenplan",
+          "nw": {
+            "name": "södrahagalund",
+            "distance": 2
+          }
+        }
+      }, {
+        "name": "Södra Hagalund",
+        "textAnchor": "start",
+        "textAngle": -45,
+        "id": "södrahagalund",
+        "connections": {
+          "se": "hagastaden",
+          "n": {
+            "name": "arenastaden",
+            "distance": 2
+          }
+        }
+      }, {
+        "name": "Arenastaden",
+        "textAnchor": "start",
+        "textAngle": -45,
+        "id": "arenastaden",
+        "connections": {
+          "s": "södrahagalund"
+        }
+      }
+    ],
+    "line": "yellow"
+  }, {
+    "date": "20XX-XX-XX",
+    "stations": [
+      {
+        "id": "odenplan",
+        "connections": {
+          "e": "rådmansgatan"
+        }
+      }, {
+        "id": "rådmansgatan",
+        "connections": {
+          "e": "hötorget"
+        }
+      }, {
+        "id": "hötorget",
+        "connections": {
+          "s": "tcentralen"
+        }
+      }, {
+        "id": "tcentralen",
+        "connections": {
+          "s": "gamlastan"
+        }
+      }, {
+        "id": "gamlastan",
+        "connections": {
+          "s": "slussen"
+        }
+      }, {
+        "id": "slussen",
+        "connections": {
+          "s": "medis"
+        }
+      }, {
+        "id": "medis",
+        "connections": {
+          "s": "skanstull"
+        }
+      }, {
+        "id": "skanstull",
+        "connections": {
+          "s": "gullmars"
+        }
+      }, {
+        "id": "gullmars",
+        "connections": {
+          "s": "skärmarbrink"
+        }
+      }, {
+        "id": "skärmarbrink",
+        "connections": {
+          "s": "blåsut"
+        }
+      }, {
+        "id": "blåsut",
+        "connections": {
+          "s": "sandsborg"
+        }
+      }, {
+        "id": "sandsborg",
+        "connections": {
+          "s": "skogskyrkogården"
+        }
+      }, {
+        "id": "skogskyrkogården",
+        "connections": {
+          "s": "tallkrogen"
+        }
+      }, {
+        "id": "tallkrogen",
+        "connections": {
+          "s": "gubbängen"
+        }
+      }, {
+        "id": "gubbängen",
+        "connections": {
+          "s": "hökarängen"
+        }
+      }, {
+        "id": "hökarängen",
+        "connections": {
+          "s": "farsta"
+        }
+      }, {
+        "id": "farsta",
+        "connections": {
+          "s": "farstastrand"
+        }
+      }, {
+        "id": "farstastrand",
+        "connections": {}
+      }
+    ],
+    "line": "yellow"
+  }, {
+    "date": "20XX-XX-XX",
+    "stations": [
+      {
+        "id": "skärmarbrink",
+        "connections": {
+          "se": "hammarbyhöjden"
+        }
+      }, {
+        "id": "hammarbyhöjden",
+        "connections": {
+          "se": "björkhagen"
+        }
+      }, {
+        "id": "björkhagen",
+        "connections": {
+          "se": "kärrtorp"
+        }
+      }, {
+        "id": "kärrtorp",
+        "connections": {
+          "se": "bagarmossen"
+        }
+      }, {
+        "id": "bagarmossen",
+        "connections": {
+          "se": "skarpnäck"
+        }
+      }, {
+        "id": "skarpnäck",
+        "connections": {}
+      }
+    ],
+    "line": "yellow"
   }
 ]
