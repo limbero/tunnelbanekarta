@@ -171,6 +171,7 @@ async function main() {
   lineToColor['red'] = style.getPropertyValue('--red');
   lineToColor['blue'] = style.getPropertyValue('--blue');
   lineToColor['yellow'] = style.getPropertyValue('--yellow');
+  lineToColor['grey'] = style.getPropertyValue('--grey');
 
   const svg = document.createElementNS(SVG_NAMESPACE, 'svg');
   svg.classList.add('main');
@@ -216,7 +217,7 @@ async function main() {
     const instant = timeline[i];
     title.textContent = 'Tunnelbanan ' + instant.date;
     if (typeof instant.startPos !== 'undefined') {
-      coords = moveXStepsInDirection(3, 'n', {
+      coords = moveXStepsInDirection(instant.startPos.offset.lengths, instant.startPos.offset.dir, {
         x: alreadyDrawnStations[instant.startPos.id].stationDot.cx.baseVal.value,
         y: alreadyDrawnStations[instant.startPos.id].stationDot.cy.baseVal.value
       });
@@ -250,6 +251,9 @@ async function main() {
           } else if (instant.line === 'yellow') {
             thisConn.setAttribute('transform', 'translate(5 -5)');
             thisConn.parentNode.insertBefore(thisConn, thisConn.parentNode.firstChild);
+          } else if (instant.line === 'grey') {
+            thisConn.setAttribute('transform', 'translate(0 5)');
+            thisConn.parentNode.insertBefore(thisConn, thisConn.parentNode.firstChild);
           }
           await sleep(50);
         } else if (station.type === 'changeStationColor') {
@@ -269,6 +273,9 @@ async function main() {
             thisDot.parentNode.insertBefore(thisDot, thisDot.parentNode.firstChild);
           } else if (instant.line === 'yellow') {
             thisDot.setAttribute('transform', 'translate(5 -5)');
+            thisDot.parentNode.insertBefore(thisDot, thisDot.parentNode.firstChild);
+          } else if (instant.line === 'grey') {
+            thisDot.setAttribute('transform', 'translate(0 5)');
             thisDot.parentNode.insertBefore(thisDot, thisDot.parentNode.firstChild);
           }
           await sleep(50);
@@ -291,18 +298,18 @@ async function main() {
         };
       }
 
-      let stationDot = newStation(coords.x, coords.y, instant.line);
+      let stationDot = newStation(coords.x, coords.y, instant.line, station.id);
       if (alreadyDrawnStations[station.id]) {
         if (!alreadyDrawnStations[station.id].stationDots[instant.line]) {
           alreadyDrawnStations[station.id].stationDots[instant.line] = stationDot;
-          if (instant.line === 'blue' || instant.line === 'yellow') {
+          if (instant.line !== 'red') {
             g.insertBefore(stationDot, g.firstChild);
           } else {
             g.appendChild(stationDot);
           }
         }
       } else {
-        if (instant.line === 'blue' || instant.line === 'yellow') {
+        if (instant.line !== 'red') {
           g.insertBefore(stationDot, g.firstChild);
         } else {
           g.appendChild(stationDot);
@@ -359,7 +366,7 @@ async function main() {
       prevStation = station;
       await sleep(500);
       if (typeof connection !== 'undefined') {
-        if (instant.line === 'blue' || instant.line === 'yellow') {
+        if (instant.line !== 'red') {
           g.insertBefore(connection, g.firstChild);
         } else {
           g.appendChild(connection);
@@ -407,11 +414,11 @@ function moveXStepsInDirection (x, direction, coords) {
   return modifiedCoords;
 }
 
-function newStation(x, y, line) {
+function newStation(x, y, line, stationId) {
   let station = document.createElementNS(SVG_NAMESPACE, 'circle');
   station.setAttribute('cx', x);
   station.setAttribute('cy', y);
-  station.setAttribute('r', 5);
+  station.setAttribute('r', stationId.includes('elbow') ? 3 : 5);
   station.setAttribute('fill', lineToColor[line]);
   station.classList.add(line);
 
@@ -421,6 +428,8 @@ function newStation(x, y, line) {
     station.setAttribute('transform', 'translate(0 -5)');
   } else if (line === 'yellow') {
     station.setAttribute('transform', 'translate(5 -5)');
+  } else if (line === 'grey') {
+    station.setAttribute('transform', 'translate(0 5)');
   }
 
   return station;
@@ -450,6 +459,8 @@ function newStationName(x, y, angle, anchor, text, line) {
     transform += 'translate(0 -5) ';
   } else if (line === 'yellow') {
     transform += 'translate(5 -5) ';
+  } else if (line === 'grey') {
+    transform += 'translate(0 5) ';
   }
   transform += `rotate(${angle}, ${anglex}, ${y})`;
   name.setAttribute('transform', transform);
@@ -472,6 +483,8 @@ function newConnection(x1, y1, x2, y2, line) {
     conn.setAttribute('transform', 'translate(0 -5)');
   } else if (line === 'yellow') {
     conn.setAttribute('transform', 'translate(5 -5)');
+  } else if (line === 'grey') {
+    conn.setAttribute('transform', 'translate(0 5)');
   }
 
   return conn;

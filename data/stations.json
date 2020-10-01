@@ -130,12 +130,12 @@
         }
       }, {
         "name": "Sockenplan",
-        "textAnchor": "start",
-        "textAngle": 90,
+        "textAnchor": "end",
+        "textAngle": 0,
         "id": "sockenplan",
         "connections": {
           "ne": "enskedegård",
-          "sw": "svedmyra"
+          "s": "svedmyra"
         }
       }, {
         "name": "Svedmyra",
@@ -143,8 +143,8 @@
         "textAngle": 0,
         "id": "svedmyra",
         "connections": {
-          "ne": "sockenplan",
-          "sw": "stureby"
+          "n": "sockenplan",
+          "s": "stureby"
         }
       }, {
         "name": "Stureby",
@@ -214,7 +214,7 @@
       }, {
         "name": "Thorildsplan",
         "textAnchor": "end",
-        "textAngle": -45,
+        "textAngle": 45,
         "id": "thorildsplan",
         "connections": {
           "w": "kristineberg",
@@ -623,24 +623,39 @@
         "id": "hornstull",
         "connections": {
           "ne": "zinken",
-          "sw": "liljeholmen"
+          "sw": {
+            "name": "liljeholmen",
+            "distance": 2
+          }
         }
       }, {
         "name": "Liljeholmen",
-        "textAnchor": "start",
-        "textAngle": 90,
+        "textAnchor": "end",
+        "textAngle": 45,
         "id": "liljeholmen",
         "connections": {
           "ne": "hornstull",
-          "sw": "kransen"
+          "sw": "liljeholmen-kransen-elbow"
+        }
+      }, {
+        "name": "",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "liljeholmen-kransen-elbow",
+        "connections": {
+          "ne": "liljeholmen",
+          "w": {
+            "name": "kransen",
+            "distance": 2
+          }
         }
       }, {
         "name": "Midsommarkransen",
-        "textAnchor": "start",
-        "textAngle": 90,
+        "textAnchor": "end",
+        "textAngle": 0,
         "id": "kransen",
         "connections": {
-          "ne": "liljeholmen",
+          "e": "liljeholmen-kransen-elbow",
           "sw": "telefonplan"
         }
       }, {
@@ -687,21 +702,27 @@
       {
         "id": "liljeholmen",
         "connections": {
-          "w": "aspudden"
+          "w": {
+            "name": "aspudden",
+            "distance": 2
+          }
         }
       }, {
         "name": "Aspudden",
         "textAnchor": "end",
-        "textAngle": -45,
+        "textAngle": 45,
         "id": "aspudden",
         "connections": {
           "e": "liljeholmen",
-          "w": "örnsberg"
+          "w": {
+            "name": "örnsberg",
+            "distance": 2
+          }
         }
       }, {
         "name": "Örnsberg",
         "textAnchor": "end",
-        "textAngle": -45,
+        "textAngle": 45,
         "id": "örnsberg",
         "connections": {
           "e": "aspudden"
@@ -720,7 +741,7 @@
       }, {
         "name": "Axelsberg",
         "textAnchor": "end",
-        "textAngle": -45,
+        "textAngle": 45,
         "id": "axelsberg",
         "connections": {
           "e": "örnsberg",
@@ -1383,14 +1404,14 @@
       }, {
         "type": "changeConnectionColor",
         "from": "sockenplan",
-        "direction": "sw"
+        "direction": "s"
       }, {
         "type": "changeStationColor",
         "id": "svedmyra"
       }, {
         "type": "changeConnectionColor",
         "from": "svedmyra",
-        "direction": "sw"
+        "direction": "s"
       }, {
         "type": "changeStationColor",
         "id": "stureby"
@@ -1646,5 +1667,81 @@
       }
     ],
     "line": "yellow"
+  }, {
+    "date": "20XX-XX-XX",
+    "stations": [
+      {
+        "id": "thorildsplan",
+        "connections": {
+          "sw": {
+            "name": "thorildsplan-liljeholmen-elbow",
+            "distance": 2
+          }
+        }
+      }
+    ],
+    "line": "grey"
+  }, {
+    "date": "20XX-XX-XX",
+    "startPos": {
+      "id": "thorildsplan",
+      "offset": {
+        "dir": "sw",
+        "lengths": 2
+      }
+    },
+    "stations": [
+      {
+        "name": "",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "thorildsplan-liljeholmen-elbow",
+        "connections": {
+          "s": {
+            "name": "liljeholmen",
+            "distance": 2
+          }
+        }
+      }, {
+        "id": "liljeholmen",
+        "connections": {
+          "s": {
+            "name": "årstaberg",
+            "distance": 2
+          }
+        }
+      }, {
+        "name": "Årstaberg",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "årstaberg",
+        "connections": {
+          "sw": "årstafältet"
+        }
+      }, {
+        "name": "Årstafältet",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "årstafältet",
+        "connections": {
+          "s": "östberga"
+        }
+      }, {
+        "name": "Östberga",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "östberga",
+        "connections": {
+          "s": "älvsjö"
+        }
+      }, {
+        "name": "Älvsjö",
+        "textAnchor": "end",
+        "textAngle": 0,
+        "id": "älvsjö",
+        "connections": {}
+      }
+    ],
+    "line": "grey"
   }
 ]
