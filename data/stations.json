@@ -1654,10 +1654,10 @@
       }, {
         "id": "kärrtorp",
         "connections": {
-          "se": "bagarmossen"
+          "se": "bagis"
         }
       }, {
-        "id": "bagarmossen",
+        "id": "bagis",
         "connections": {
           "se": "skarpnäck"
         }
